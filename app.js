@@ -19,13 +19,7 @@ dotenv.config({
 const app = express();
 
 //configuring cross origin sharing
-app.use(
-  cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 //configuring cookie-parser middleware
 app.use(cookieParser());
