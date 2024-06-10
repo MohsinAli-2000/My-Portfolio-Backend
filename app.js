@@ -18,18 +18,14 @@ dotenv.config({
 });
 const app = express();
 
-// Manually set CORS headers to allow requests from multiple origins
-// app.use((req, res, next) => {
-//   const allowedOrigins = ['https://mohsin-ali-portfolio-dashboard.netlify.app', 'https://mohsin-ali-portfolio-website.netlify.app'];
-//   const origin = req.headers.origin;
-//   if (allowedOrigins.includes(origin)) {
-//     res.setHeader('Access-Control-Allow-Origin', origin);
-//   }
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-//   next();
-// });
+//configuring cross origin sharing
+app.use(
+  cors({
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 //configuring cookie-parser middleware
 app.use(cookieParser());
