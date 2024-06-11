@@ -30,6 +30,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
+      console.log("CORS origin:", origin); // Added logging
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -44,10 +45,11 @@ app.use(
 // Middleware to set headers for every response
 app.use((req, res, next) => {
   const origin = req.headers.origin;
+  console.log("Middleware origin:", origin); // Added logging
   if (allowedOrigins.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
   }
-  res.header("Access-Control-Allow-Credentials", "true"); // Added this line
+  res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
@@ -56,10 +58,11 @@ app.use((req, res, next) => {
 // Handle preflight requests
 app.options("*", (req, res) => {
   const origin = req.headers.origin;
+  console.log("Preflight request origin:", origin); // Added logging
   if (allowedOrigins.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
   }
-  res.header("Access-Control-Allow-Credentials", "true"); // Added this line
+  res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.sendStatus(204);
