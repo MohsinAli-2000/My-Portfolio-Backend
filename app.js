@@ -23,9 +23,10 @@ app.use(
   cors({
     origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    withCredentials: true,
+    credentials: true,
   })
 );
+
 
 //configuring cookie-parser middleware
 app.use(cookieParser());
