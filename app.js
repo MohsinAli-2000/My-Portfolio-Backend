@@ -23,7 +23,7 @@ const app = express();
 // Allowed origins for CORS
 const allowedOrigins = [
   "https://mohsin-ali-portfolio-website.netlify.app",
-  "https://mohsin-ali-portfolio-dashboard.netlify.app",
+  "https://mohsin-ali-portfolio-dashboard.netlify.app"
 ];
 
 // CORS configuration
