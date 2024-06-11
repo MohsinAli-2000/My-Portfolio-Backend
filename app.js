@@ -21,7 +21,7 @@ dotenv.config({
 const app = express();
 
 // Configuring cross origin sharing
-const allowedOrigins = [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL];
+const allowedOrigins = ["https://mohsin-ali-portfolio-website.netlify.app", "https://mohsin-ali-portfolio-dashboard.netlify.app"];
 app.use(
   cors({
     origin: function (origin, callback) {
