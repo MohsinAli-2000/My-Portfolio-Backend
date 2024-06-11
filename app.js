@@ -23,7 +23,7 @@ const app = express();
 // Allowed origins for CORS
 const allowedOrigins = [
   "https://mohsin-ali-portfolio-website.netlify.app",
-  "https://mohsin-ali-portfolio-dashboard.netlify.app"
+  "https://mohsin-ali-portfolio-dashboard.netlify.app",
 ];
 
 // CORS configuration
@@ -37,7 +37,7 @@ app.use(
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    credentials: true, // Ensure that credentials are allowed
   })
 );
 
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
   if (allowedOrigins.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
   }
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Credentials", "true"); // Added this line
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
@@ -59,7 +59,7 @@ app.options("*", (req, res) => {
   if (allowedOrigins.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
   }
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Credentials", "true"); // Added this line
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.sendStatus(204);
