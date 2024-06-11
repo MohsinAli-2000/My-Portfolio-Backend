@@ -37,7 +37,7 @@ app.use(
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    credentials: true, // Ensure that credentials are allowed
   })
 );
 
